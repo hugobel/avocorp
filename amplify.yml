@@ -21,7 +21,7 @@ test:
         - npm ci
     test:
       commands:
-        - npm run test
+        - npm run test:ci
   artifacts:
     baseDirectory: .
     files:
