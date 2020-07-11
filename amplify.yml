@@ -14,3 +14,13 @@ frontend:
   cache:
     paths:
       - node_modules/**/*
+test:
+  phases:
+    preTest:
+      commands:
+        - npm ci
+    test:
+      commands:
+        - npm run test --coverage
+    postTest:
+      commands: []
