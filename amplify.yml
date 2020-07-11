@@ -1,5 +1,13 @@
 version: 1
-frontend:
+test:
+  phases:
+    preTest:
+      commands:
+        - npm ci
+    test:
+      commands:
+        - npm run test
+app:
   phases:
     preBuild:
       commands:
