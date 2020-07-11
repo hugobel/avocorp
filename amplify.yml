@@ -1,13 +1,5 @@
 version: 1
-test:
-  phases:
-    preTest:
-      commands:
-        - npm ci
-    test:
-      commands:
-        - npm run test
-app:
+frontend:
   phases:
     preBuild:
       commands:
@@ -22,3 +14,13 @@ app:
   cache:
     paths:
       - node_modules/**/*
+test:
+  phases:
+    preTest:
+      commands:
+        - npm ci
+    test:
+      commands:
+        - npm run test
+    postTest:
+      commands: []
