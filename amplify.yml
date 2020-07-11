@@ -21,6 +21,4 @@ test:
         - npm ci
     test:
       commands:
-        - npm run test --coverage
-    postTest:
-      commands: []
+        - npm run test
