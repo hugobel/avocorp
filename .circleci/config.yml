@@ -2,6 +2,7 @@ version: 2.1
 
 executors:
   node12:
+    working_directory: ~/repo
     docker:
       - image: circleci/node:12
 
@@ -30,9 +31,8 @@ jobs:
           command: yarn add --dev jest-junit
 
       - persist_to_workspace:
-          paths:
-            - project
-          root: ~/
+          root: ~/repo
+          paths: .
   jest:
     executor: node12
 
