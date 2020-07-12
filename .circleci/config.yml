@@ -1,41 +1,16 @@
-version: 2
-jobs:
-  build:
-    docker:
-      - image: circleci/node:12
-
-    working_directory: ~/repo
-
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
-
-      - run:
-          name: Install dependendies
-          command: yarn install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-      - run:
-          name: Install JUnit coverage reporter
-          command: yarn add --dev jest-junit
-
-      - run:
-          name: Run Tests with JUnit as reporter
-          command: yarn test --ci --runInBand --reporters=default --reporters=jest-junit
-          environment:
-            JEST_JUNIT_OUTPUT_DIR: ./reports/jest
-            JEST_JUNIT_OUTPUT_NAME: results.xml
-            JEST_JUNIT_SUITE_NAME: "{filename}"
-
-      - store_artifacts:
-          path: ./reports/jest
-
-      - store_test_results:
-          path: ./reports
+orbs:
+  react: "thefrontside/react@dev:alpha"
+version: 2.1
+workflows:
+  push:
+    jobs:
+      - react/install
+      - react/eslint:
+          requires:
+            - react/install
+      - react/test:
+          requires:
+            - react/install
+      - react/coverage:
+          requires:
+            - react/install
