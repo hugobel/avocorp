@@ -33,8 +33,6 @@ jobs:
   jest:
     executor: node12
 
-    working_directory: ~/repo
-
     steps:
       - run:
           name: Ensure reports directory is present
@@ -55,8 +53,6 @@ jobs:
           path: ./reports
   coverage:
     executor: node12
-
-    working_directory: ~/repo
 
     steps:
       - run:
