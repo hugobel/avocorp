@@ -20,4 +20,15 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: yarn test
+      - run:
+          name: Run Tests
+          command: |
+            mkdir -p ~/reports/jest
+            yarn test --reporters=default --reporters=jest-junit
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: ~/reports/jest
+            JEST_JUNIT_OUTPUT_NAME: results.xml
+      - store_artifacts:
+          path: ~/reports/jest
+      - store_test_results:
+          path: ~/reports/jest
