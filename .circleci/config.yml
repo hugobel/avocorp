@@ -1,10 +1,13 @@
-version: 2
-jobs:
-  build:
+version: 2.1
+
+executors:
+  node12:
     docker:
       - image: circleci/node:12
 
-    working_directory: ~/repo
+jobs:
+  install:
+    executor: node12
 
     steps:
       - checkout
@@ -26,8 +29,20 @@ jobs:
           name: Install JUnit coverage reporter
           command: yarn add --dev jest-junit
 
+      - persist_to_workspace:
+          paths:
+            - project
+          root: ~/
+  jest:
+    executor: node12
+
+    steps:
       - run:
-          name: Run Tests with JUnit as reporter
+          name: Ensure reports directory is present
+          command: mkdir -p reports/jest
+
+      - run:
+          name: Run tests with JUnit as reporter
           command: yarn test --ci --runInBand --reporters=default --reporters=jest-junit
           environment:
             JEST_JUNIT_OUTPUT_DIR: ./reports/jest
@@ -39,3 +54,24 @@ jobs:
 
       - store_test_results:
           path: ./reports
+  coverage:
+    executor: node12
+
+    steps:
+      - run:
+          name: Run tests coverage
+          command: yarn test --ci --coverage
+
+      - store_artifacts:
+          path: ./coverage
+
+workflows:
+  test:
+    jobs:
+      - install
+      - jest:
+          requires:
+            - install
+      - coverage:
+          requires:
+            - install
