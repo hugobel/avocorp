@@ -32,6 +32,7 @@ jobs:
           environment:
             JEST_JUNIT_OUTPUT_DIR: ./reports/
             JEST_JUNIT_OUTPUT_NAME: jest.xml
+            JEST_JUNIT_SUITE_NAME: "{filename}"
 
       - store_artifacts:
           path: ./reports
