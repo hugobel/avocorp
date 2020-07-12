@@ -39,7 +39,7 @@
   },
   "jest-junit": {
     "outputDirectory": "./reports/jest",
-    "outputName": "report.xml",
+    "outputName": "results.xml",
     "usePathForSuiteName": "true"
   }
 }
