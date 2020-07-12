@@ -9,8 +9,6 @@ jobs:
   install:
     executor: node12
 
-    working_directory: ~/repo
-
     steps:
       - checkout
       - restore_cache:
