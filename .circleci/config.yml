@@ -13,7 +13,7 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
 
-      - run: yarn install
+      - run: npm install
 
       - save_cache:
           paths:
@@ -21,11 +21,14 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run:
-          name: Run Tests
-          command: |
-            mkdir -p ./reports/jest
-            yarn test --reporters=default --reporters=jest-junit
+          name: Install JUnit coverage reporter
+          command: npm i jest-junit --save-dev
+
+      - run:
+          name: Run Tests with JUnit as reporter
+          command: npm run test --reporters=default --reporters=jest-junit
+
       - store_artifacts:
           path: ./reports/jest
       - store_test_results:
-          path: ./reports
+          path: ./reports/jest
