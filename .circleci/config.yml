@@ -37,6 +37,9 @@ jobs:
     executor: node12
 
     steps:
+      - attach_workspace:
+          at: ~/repo
+
       - run:
           name: Ensure reports directory is present
           command: mkdir -p reports/jest
@@ -58,6 +61,9 @@ jobs:
     executor: node12
 
     steps:
+      - attach_workspace:
+          at: ~/repo
+
       - run:
           name: Run tests coverage
           command: yarn test --ci --coverage
