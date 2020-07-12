@@ -11,8 +11,8 @@ jobs:
           steps:
             - run: npm ci
             - run: npm test
-      - store_test_results:
-        path: test-results
+            - store_test_results:
+              path: reports
 workflows:
   build-and-test:
     jobs:
