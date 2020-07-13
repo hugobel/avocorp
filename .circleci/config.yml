@@ -74,10 +74,24 @@ jobs:
 workflows:
   test:
     jobs:
-      - install
+      - install:
+          filters:
+            branches:
+              only:
+                - master
+                - release
       - jest:
+          filters:
+            branches:
+              only:
+                - master
+                - release
           requires:
             - install
       - coverage:
+          filters:
+            branches:
+              only:
+                - release
           requires:
             - install
