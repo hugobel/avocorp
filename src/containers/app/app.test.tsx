@@ -3,8 +3,13 @@ import { render, screen } from "@testing-library/react";
 import App from ".";
 
 describe("<App /> tests", () => {
-  test('renders a "hello world" message', () => {
+  test('renders a member access form', () => {
     render(<App />);
-    expect(screen.getByText(/hello world/i)).toBeInTheDocument();
+
+    const header = screen.getByText(/member access/i);
+    expect(header).toBeInTheDocument();
+
+    const inactiveHeader = screen.queryByText(/welcome/i);
+    expect(inactiveHeader).not.toBeInTheDocument();
   });
 });
