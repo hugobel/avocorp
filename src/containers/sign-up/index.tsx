@@ -16,7 +16,7 @@ const SignUp: React.FC<Props> = (props) => {
 			<Input type="password" placeholder="password" value="" />
 			<Input type="password" placeholder="repeat password" value="" />
 			<Button text="Sign up" />
-			<p>I have an account, <a onClick={switchView}>log in.</a></p>
+			<p>I have an account, <a href="#log-in" onClick={switchView}>log in.</a></p>
 		</form>
 	)	
 };
