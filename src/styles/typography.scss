@@ -1,0 +1,44 @@
+@mixin type-heading($size: M) {
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+
+  @if $size == L {
+    font-size: 60px;
+    line-height: 72px;
+    letter-spacing: -0.9px;
+  }
+
+  @if $size == M {
+    font-size: 36px;
+    line-height: 45px;
+    letter-spacing: -0.3px;
+  }
+
+  @if $size == S {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  @if $size == XS {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+
+@mixin type-body {
+  font-family: "IBMPlexSansCond", sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+@mixin type-controls {
+  font-family: "Rubik", sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+@mixin type-caption {
+  font-family: "IBMPlexSansCond", sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+}
