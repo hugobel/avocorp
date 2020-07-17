@@ -1,0 +1,32 @@
+@import "../../styles/utils.scss";
+
+.input {
+  @include type-controls;
+  height: 28px;
+  outline: none;
+  color: $neutral-d;
+  border-radius: 2px;
+  background: white;
+  padding: 5px 0.75rem;
+  border: solid 1px $neutral-c;
+  margin-bottom: 1rem;
+
+  &::placeholder {
+    color: $neutral-c;
+  }
+
+  &:focus {
+    color: $teal;
+    border-color: $teal;
+  }
+
+  &:disabled {
+    border-color: rgba($neutral-c, 0.5);
+    color: rgba($neutral-b, 0.5);
+  }
+
+  &.error {
+    color: $danger;
+    border-color: $danger;
+  }
+}

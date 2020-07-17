@@ -1,0 +1,30 @@
+@import "../../styles/utils.scss";
+
+.button {
+  @include type-controls;
+  height: 24px;
+  outline: none;
+  padding: 3px 1rem;
+  color: $neutral-a;
+  background: $teal;
+  border-radius: 2px;
+  border: 1px solid $emerald;
+
+  &:hover {
+    border-color: $grass;
+    background-color: $emerald;
+    text-shadow: 0 1px 1px rgba($emerald, 0.75);
+  }
+
+  &:active {
+    color: rgba($neutral-a, 0.9);
+    background-image: linear-gradient(to bottom, $emerald, $teal);
+  }
+
+  &:disabled {
+    color: $neutral-c;
+    border-color: rgba($neutral-c, 0.5);
+    background-color: rgba($neutral-b, 0.5);
+    text-shadow: none;
+  }
+}
