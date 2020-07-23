@@ -3,11 +3,7 @@ import Button from "../../components/button";
 import Input from "../../components/input";
 import "./login.scss";
 
-type Props = {
-  switchView: () => void;
-};
-
-const LogIn: React.FC<Props> = (props) => {
+const LogIn = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { switchView } = props;

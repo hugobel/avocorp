@@ -3,11 +3,7 @@ import Button from "../../components/button";
 import Input from "../../components/input";
 import "./signup.scss";
 
-type Props = {
-  switchView: () => void;
-};
-
-const SignUp: React.FC<Props> = (props) => {
+const SignUp = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordMatch, setPasswordMatch] = useState("");
@@ -49,7 +45,7 @@ const SignUp: React.FC<Props> = (props) => {
         Sign Up
       </Button>
       <p>
-        I have an account,{" "}
+        I have an account,
         <a href="#log-in" onClick={switchView}>
           log in.
         </a>
