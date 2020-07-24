@@ -1,3 +1,13 @@
 .log-in {
-  width: 210px;
+  width: 240px;
+  text-align: left;
+
+  .login-btn {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .legend {
+    text-align: center;
+  }
 }

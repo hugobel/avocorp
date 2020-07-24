@@ -6,22 +6,26 @@
     font-size: 60px;
     line-height: 72px;
     letter-spacing: -0.9px;
+    margin: 1rem 0;
   }
 
   @if $size == M {
     font-size: 36px;
     line-height: 45px;
     letter-spacing: -0.3px;
+    margin: 0.75rem 0;
   }
 
   @if $size == S {
     font-size: 24px;
     line-height: 28px;
+    margin: 0.5rem 0;
   }
 
   @if $size == XS {
     font-size: 20px;
     line-height: 24px;
+    margin: 0.25rem 0;
   }
 }
 
@@ -29,16 +33,19 @@
   font-family: "IBMPlexSansCond", sans-serif;
   font-size: 16px;
   line-height: 22px;
+  margin: 0.25rem 0;
 }
 
 @mixin type-controls {
   font-family: "Rubik", sans-serif;
   font-size: 14px;
   line-height: 18px;
+  margin: 0.25rem 0;
 }
 
 @mixin type-caption {
   font-family: "IBMPlexSansCond", sans-serif;
   font-size: 12px;
   line-height: 16px;
+  margin: 0.25rem 0;
 }
