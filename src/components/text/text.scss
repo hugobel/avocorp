@@ -1,0 +1,42 @@
+@import "../../styles/utils";
+
+.text {
+  a:link,
+  a:visited {
+    color: $emerald;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: $teal;
+    text-decoration: underline;
+  }
+
+  &.head-l {
+    @include type-heading(L);
+  }
+
+  &.head-m {
+    @include type-heading(M);
+  }
+
+  &.head-s {
+    @include type-heading(S);
+  }
+
+  &.head-xs {
+    @include type-heading(XS);
+  }
+
+  &.body {
+    @include type-body;
+  }
+
+  &.controls {
+    @include type-controls;
+  }
+
+  &.caption {
+    @include type-caption;
+  }
+}
