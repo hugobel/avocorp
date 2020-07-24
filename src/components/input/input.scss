@@ -10,6 +10,7 @@
   padding: 5px 0.75rem;
   border: solid 1px $neutral-c;
   margin-bottom: 1rem;
+  width: 100%;
 
   &::placeholder {
     color: $neutral-c;
@@ -23,6 +24,8 @@
   &:disabled {
     border-color: rgba($neutral-c, 0.5);
     color: rgba($neutral-b, 0.5);
+    color: $neutral-d, 0.5;
+    background-color: rgba($neutral-b, 0.5);
   }
 
   &.error {

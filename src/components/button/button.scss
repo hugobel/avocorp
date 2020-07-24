@@ -27,4 +27,18 @@
     background-color: rgba($neutral-b, 0.5);
     text-shadow: none;
   }
+
+  &.small {
+    font-size: 12px;
+    line-height: 14px;
+    padding: 2px 0.75rem;
+    height: 16px;
+  }
+
+  &.large {
+    font-size: 18px;
+    line-height: 24px;
+    padding: 4px 1.5rem;
+    height: 32px;
+  }
 }

@@ -3,7 +3,7 @@ import classnames from "classnames";
 import "./input.scss";
 
 const Input = (props) => {
-  const { type, placeholder, value, onChange, error } = props;
+  const { type, placeholder, value, onChange, error, disabled } = props;
 
   const inputClassNames = classnames("input", {
     error,
@@ -15,6 +15,7 @@ const Input = (props) => {
 
   return (
     <input
+      disabled={disabled}
       className={inputClassNames}
       type={type}
       placeholder={placeholder}
