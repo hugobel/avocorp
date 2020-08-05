@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "../../components/button";
 import Input from "../../components/input";
+import Text from "../../components/text";
 import "./signup.scss";
 
 const SignUp = (props) => {
@@ -26,7 +27,10 @@ const SignUp = (props) => {
 
   return (
     <form className="sign-up" onSubmit={handleSubmit}>
-      <h2>Welcome to Avocorp</h2>
+      <Text className="title" size="head-s">
+        Welcome to Avocorp
+      </Text>
+      <Text size="caption">Please fill the details.</Text>
       <Input placeholder="user name" value={username} onChange={setUsername} />
       <Input
         type="password"
@@ -41,15 +45,19 @@ const SignUp = (props) => {
         value={passwordMatch}
         onChange={setPasswordMatch}
       />
-      <Button onClick={handleSubmit} disabled={isButtonDisabled}>
+      <Button
+        className="signup-btn"
+        onClick={handleSubmit}
+        disabled={isButtonDisabled}
+      >
         Sign Up
       </Button>
-      <p>
-        I have an account,
+      <Text className="legend" size="caption">
+        I have an account,&nbsp;
         <a href="#log-in" onClick={switchView}>
           log in.
         </a>
-      </p>
+      </Text>
     </form>
   );
 };

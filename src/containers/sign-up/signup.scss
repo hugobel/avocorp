@@ -1,3 +1,20 @@
+@import "../../styles/utils";
+
 .sign-up {
-  width: 210px;
+  width: 240px;
+  text-align: left;
+  margin-right: 90px;
+
+  .title {
+    color: $grass;
+  }
+
+  .signup-btn {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .legend {
+    text-align: center;
+  }
 }

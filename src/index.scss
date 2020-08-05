@@ -1,5 +1,12 @@
 @import "./styles/utils.scss";
 
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0px;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -10,6 +17,7 @@ body {
   @include type-body;
   color: $neutral-e;
   background: $neutral-a;
+  min-height: 100%;
 }
 
 * {

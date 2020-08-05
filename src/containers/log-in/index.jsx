@@ -17,7 +17,9 @@ const LogIn = (props) => {
 
   return (
     <form className="log-in" onSubmit={handleSubmit}>
-      <Text size="head-s">Member access</Text>
+      <Text className="title" size="head-s">
+        Member access
+      </Text>
       <Text size="caption">Please sign in to continue.</Text>
       <Input placeholder="user name" value={username} onChange={setUsername} />
       <Input
@@ -34,7 +36,7 @@ const LogIn = (props) => {
         Log In
       </Button>
       <Text size="caption" className="legend">
-        Don't have an account yet?
+        Don't have an account yet?&nbsp;
         <a href="#sign-up" onClick={switchView}>
           Sign up.
         </a>

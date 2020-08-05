@@ -1,6 +1,13 @@
+@import "../../styles/utils";
+
 .log-in {
   width: 240px;
   text-align: left;
+  margin-left: 90px;
+
+  .title {
+    color: $grass;
+  }
 
   .login-btn {
     display: block;
