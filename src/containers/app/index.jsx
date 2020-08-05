@@ -1,25 +1,25 @@
-import React, { useState } from "react";
-import classnames from "classnames";
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import LogIn from "../log-in";
 import SignUp from "../sign-up";
 import "./app.scss";
 
 const App = () => {
-  const [activeForm, setActiveForm] = useState("log-in");
-  const appClasses = classnames("app", {
-    "-reverse": activeForm === "sign-up",
-  });
-
   return (
-    <div className={appClasses}>
-      <div className="overlay" />
-      {activeForm === "log-in" && (
-        <LogIn switchView={() => setActiveForm("sign-up")} />
-      )}
-      {activeForm === "sign-up" && (
-        <SignUp switchView={() => setActiveForm("log-in")} />
-      )}
-    </div>
+    <BrowserRouter>
+      <div className="app">
+        <div className="overlay" />
+        <Switch>
+          <Route path="/log-in">
+            <LogIn />
+          </Route>
+          <Route path="/sign-up">
+            <SignUp />
+          </Route>
+          <Route path="*">Hello World</Route>
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 };
 

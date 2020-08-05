@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Button from "../../components/button";
 import Input from "../../components/input";
 import Text from "../../components/text";
@@ -8,7 +9,7 @@ const SignUp = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordMatch, setPasswordMatch] = useState("");
-  const { switchView } = props;
+  const {} = props;
 
   const isButtonDisabled =
     username.trim() === "" ||
@@ -54,9 +55,7 @@ const SignUp = (props) => {
       </Button>
       <Text className="legend" size="caption">
         I have an account,&nbsp;
-        <a href="#log-in" onClick={switchView}>
-          log in.
-        </a>
+        <Link to="/log-in">log in.</Link>
       </Text>
     </form>
   );
