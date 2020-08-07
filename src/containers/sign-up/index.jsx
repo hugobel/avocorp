@@ -5,11 +5,10 @@ import Input from "../../components/input";
 import Text from "../../components/text";
 import "./signup.scss";
 
-const SignUp = (props) => {
+const SignUp = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordMatch, setPasswordMatch] = useState("");
-  const {} = props;
 
   const isButtonDisabled =
     username.trim() === "" ||

@@ -5,10 +5,9 @@ import Input from "../../components/input";
 import Text from "../../components/text";
 import "./login.scss";
 
-const LogIn = (props) => {
+const LogIn = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const {} = props;
 
   const isButtonDisabled = username.trim() === "" || password.trim() === "";
 

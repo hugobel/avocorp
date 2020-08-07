@@ -1,25 +1,22 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import LogIn from "../log-in";
-import SignUp from "../sign-up";
+import { Switch, Route } from "react-router-dom";
+import Access from "../../layouts/access";
+import Home from "../../layouts/home";
+
 import "./app.scss";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <div className="app">
-        <div className="overlay" />
-        <Switch>
-          <Route path="/log-in">
-            <LogIn />
-          </Route>
-          <Route path="/sign-up">
-            <SignUp />
-          </Route>
-          <Route path="*">Hello World</Route>
-        </Switch>
-      </div>
-    </BrowserRouter>
+    <div className="app">
+      <Switch>
+        <Route path="/(log-in|sign-up)">
+          <Access />
+        </Route>
+        <Route path="*">
+          <Home />
+        </Route>
+      </Switch>
+    </div>
   );
 };
 
