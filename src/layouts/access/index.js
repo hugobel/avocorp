@@ -9,8 +9,6 @@ import "./access.scss";
 const Access = () => {
   const location = useLocation();
 
-  console.info(location);
-
   const wrapperClasses = classnames("access-layout", {
     "-reverse": location.pathname === "/sign-up",
   });
