@@ -9,7 +9,7 @@ const Sidebar = () => {
     <sidebar className="sidebar">
       <Logo />
       <Menu />
-      <Avatar size="32" username="watanabex" />
+      <Avatar size="32" username="xxx" />
     </sidebar>
   );
 };
