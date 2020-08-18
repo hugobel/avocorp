@@ -17,6 +17,7 @@ const LogIn = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    sessionStorage.setItem("username", username);
     setUser({ name: username });
   };
 

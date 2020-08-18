@@ -27,6 +27,8 @@ const SignUp = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (password !== passwordMatch) return;
+
+    sessionStorage.setItem("username", username);
     setUser({ name: username });
   };
 

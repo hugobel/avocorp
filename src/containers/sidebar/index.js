@@ -1,5 +1,4 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { actions } from "../../store/reducers/user";
 import Logo from "../../components/logo";
@@ -13,10 +12,6 @@ const Sidebar = (props) => {
   const handleLogout = () => {
     setUser({});
   };
-
-  if (!username) {
-    return <Redirect to="/log-in" />;
-  }
 
   return (
     <aside className="sidebar">
