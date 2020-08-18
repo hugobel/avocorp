@@ -9,6 +9,7 @@ const Avatar = (props) => {
       className="avatar"
       src={`https://api.adorable.io/avatars/${size}/${username}`}
       alt="avatar"
+      width={size}
       onClick={onClick}
     />
   );

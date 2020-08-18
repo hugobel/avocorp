@@ -3,6 +3,8 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import Sidebar from "../../containers/sidebar";
 
+import "./home.scss";
+
 const Home = (props) => {
   const { children, username } = props;
 

@@ -17,7 +17,7 @@ const Sidebar = (props) => {
     <aside className="sidebar">
       <Logo />
       <Menu />
-      <Avatar size="32" username={username} onClick={handleLogout} />
+      <Avatar size="48" username={username} onClick={handleLogout} />
     </aside>
   );
 };
