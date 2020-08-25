@@ -2,10 +2,19 @@ import React from "react";
 import classnames from "classnames";
 import "./input.scss";
 
-const Input = (props) => {
-  const { type, placeholder, value, onChange, error, disabled } = props;
+const Input = React.forwardRef((props, ref) => {
+  const {
+    type,
+    className,
+    placeholder,
+    value,
+    onChange,
+    error,
+    disabled,
+    ...rest
+  } = props;
 
-  const inputClassNames = classnames("input", {
+  const inputClassNames = classnames("input", className, {
     error,
   });
 
@@ -15,15 +24,17 @@ const Input = (props) => {
 
   return (
     <input
+      ref={ref}
       disabled={disabled}
       className={inputClassNames}
       type={type}
       placeholder={placeholder}
       value={value}
       onChange={handleChange}
+      {...rest}
     />
   );
-};
+});
 
 Input.defaultProps = {
   type: "text",

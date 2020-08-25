@@ -10,6 +10,7 @@ const Sidebar = (props) => {
   const { username, setUser } = props;
 
   const handleLogout = () => {
+    sessionStorage.removeItem("username");
     setUser({});
   };
 
