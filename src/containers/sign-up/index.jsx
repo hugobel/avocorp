@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import { Auth } from "aws-amplify";
 import { actions } from "../../store/reducers/user";
 import Button from "../../components/button";
 import Input from "../../components/input";
@@ -11,6 +12,7 @@ const SignUp = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordMatch, setPasswordMatch] = useState("");
+  const [error, setError] = useState(null);
 
   const { user, setUser } = props;
 
@@ -24,12 +26,27 @@ const SignUp = (props) => {
     passwordMatch.trim() !== "" &&
     password !== passwordMatch;
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    setError(null);
+
     if (password !== passwordMatch) return;
 
-    sessionStorage.setItem("username", username);
-    setUser({ name: username });
+    try {
+      const { user } = await Auth.signUp({
+        username,
+        password,
+        attributes: {
+          email: username,
+        },
+      });
+      console.info(user);
+      // sessionStorage.setItem("username", username);
+      // setUser({ name: username });
+    } catch (err) {
+      console.error(err);
+      setError(err.message);
+    }
   };
 
   if (user.name) {
@@ -42,7 +59,8 @@ const SignUp = (props) => {
         Welcome to Avocorp
       </Text>
       <Text size="caption">Please fill the details.</Text>
-      <Input placeholder="user name" value={username} onChange={setUsername} />
+      {error && <Text size="caption">{error}</Text>}
+      <Input placeholder="e-mail" value={username} onChange={setUsername} />
       <Input
         type="password"
         placeholder="password"
