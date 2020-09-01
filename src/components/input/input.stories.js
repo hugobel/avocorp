@@ -5,7 +5,13 @@ import Passcode from "./passcode";
 
 export default { title: "Input" };
 
-export const InputWithText = () => {
+export const Stateful = () => {
+  const [value, setValue] = useState("");
+
+  return <Input placeholder="Placeholder" value={value} onChange={setValue} />;
+};
+
+export const Controlled = () => {
   const options = ["text", "password"];
 
   return (
@@ -14,12 +20,13 @@ export const InputWithText = () => {
       type={select("Type", options, "text")}
       placeholder={text("Placeholder", "Enter text here...")}
       value={text("Value", "")}
+      onChange={console.info}
     />
   );
 };
 
-export const PasscodeInput = () => {
+export const MFACode = () => {
   const [code, setCode] = useState("");
 
-  return <Passcode value={code} onChange={setCode} />;
+  return <Passcode value={code} onChange={setCode} characters={6} />;
 };
