@@ -37,6 +37,12 @@ const App = (props) => {
         <Route path="/(log-in|sign-up)">
           <Access />
         </Route>
+        <Route path="/profile">
+          <Home>Profile</Home>
+        </Route>
+        <Route path="/user-transactions">
+          <Home>See user transactions</Home>
+        </Route>
         <Route path="*">
           <Home>
             <Members />

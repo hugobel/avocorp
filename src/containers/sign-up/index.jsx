@@ -5,6 +5,7 @@ import { Auth } from "aws-amplify";
 import { actions } from "../../store/reducers/user";
 import Button from "../../components/button";
 import Input from "../../components/input";
+import Passcode from "../../components/input/passcode";
 import Text from "../../components/text";
 import "./signup.scss";
 
@@ -12,7 +13,9 @@ const SignUp = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordMatch, setPasswordMatch] = useState("");
+  const [code, setCode] = useState("");
   const [error, setError] = useState(null);
+  const [showConfirmationInput, setShowConfirmationInput] = useState(false);
 
   const { user, setUser } = props;
 
@@ -33,18 +36,30 @@ const SignUp = (props) => {
     if (password !== passwordMatch) return;
 
     try {
-      const { user } = await Auth.signUp({
+      await Auth.signUp({
         username,
         password,
         attributes: {
           email: username,
         },
       });
-      console.info(user);
-      // sessionStorage.setItem("username", username);
-      // setUser({ name: username });
+
+      setShowConfirmationInput(true);
     } catch (err) {
       console.error(err);
+      setError(err.message);
+    }
+  };
+
+  const handleSubmitCode = async (event) => {
+    event.preventDefault();
+
+    try {
+      await Auth.confirmSignUp(username, code);
+
+      sessionStorage.setItem("username", username);
+      setUser({ name: username });
+    } catch (err) {
       setError(err.message);
     }
   };
@@ -54,29 +69,38 @@ const SignUp = (props) => {
   }
 
   return (
-    <form className="sign-up" onSubmit={handleSubmit}>
+    <form
+      className="sign-up"
+      onSubmit={showConfirmationInput ? handleSubmitCode : handleSubmit}
+    >
       <Text className="title" size="head-s">
         Welcome to Avocorp
       </Text>
       <Text size="caption">Please fill the details.</Text>
       {error && <Text size="caption">{error}</Text>}
-      <Input placeholder="e-mail" value={username} onChange={setUsername} />
-      <Input
-        type="password"
-        placeholder="password"
-        value={password}
-        onChange={setPassword}
-      />
-      <Input
-        error={hasPasswordError}
-        type="password"
-        placeholder="repeat password"
-        value={passwordMatch}
-        onChange={setPasswordMatch}
-      />
+      {showConfirmationInput ? (
+        <Passcode value={code} onChange={setCode} />
+      ) : (
+        <>
+          <Input placeholder="e-mail" value={username} onChange={setUsername} />
+          <Input
+            type="password"
+            placeholder="password"
+            value={password}
+            onChange={setPassword}
+          />
+          <Input
+            error={hasPasswordError}
+            type="password"
+            placeholder="repeat password"
+            value={passwordMatch}
+            onChange={setPasswordMatch}
+          />
+        </>
+      )}
       <Button
         className="signup-btn"
-        onClick={handleSubmit}
+        onClick={showConfirmationInput ? handleSubmitCode : handleSubmit}
         disabled={isButtonDisabled}
       >
         Sign Up
